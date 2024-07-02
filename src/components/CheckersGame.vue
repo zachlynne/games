@@ -136,10 +136,6 @@ export default {
 
             let element = event.target; // get the element that was clicked
 
-            // Get row and column of clicked element
-            let row = element.id.charAt(1);
-            let column = element.id.charAt(0);
-
             this.possibleMoves = null;
 
             if (this.currentPlayer === "red") { // if it is red's turn
@@ -250,8 +246,6 @@ export default {
                     this.possibleMovesOnBoard = false;
 
                 } else {    //recreate possible jumps
-                    let row = element.id.charAt(1);
-                    let column = element.id.charAt(0);
 
                     if (this.currentPlayer === "white") {
 
@@ -296,10 +290,6 @@ export default {
 
             // Establish new starting position
             let element = event.target;
-
-            // Get row and column of clicked element
-            let row = element.id.charAt(1);
-            let column = element.id.charAt(0);
 
             // Capture Jumped Piece
             if (this.possibleCaptures.has(element)) {
@@ -393,12 +383,7 @@ export default {
 
             }
         },
-        checkForKing(element) {
 
-        },
-        checkForWinCondition() {
-            let remaining
-        },
         checkRedMoves(element) {
             // Check for King Moves if element contains kinged piece
             if (element.classList.contains("king")) {

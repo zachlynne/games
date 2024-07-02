@@ -15,6 +15,7 @@ RouterLink
             <router-link v-bind:to="{ name: 'home'}" exact>Home</router-link>
             <router-link v-bind:to="{ name: 'checkers'}">Checkers</router-link>
             <router-link v-bind:to="{ name: 'connect-four'}">Connect Four</router-link>
+            <router-link v-bind:to="{ name: 'chess'}">Chess</router-link>
         </nav>
         <router-view></router-view>
     </div>
