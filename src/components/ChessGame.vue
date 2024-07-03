@@ -6,13 +6,6 @@
     <main>
         <!-- board assignment coinsides with A to H and 1 to 8 for referencing moves -->
         <div class="board">
-        
-        <div
-            v-for="piece in whitePieces"
-            :key="piece.position.charAt(0) + piece.position.charAt(1)"
-        >
-        <img :src="piece.image" />
-        </div>
           
             <div class="column" v-on:click="handleClick">
                 <div class="row odd" id="a8"></div>
@@ -105,7 +98,7 @@ export default {
     data () {
         return {
 
-            whitePieces: [
+            pieces: [
                 {    
                     type: 'pawn',
                     position: 'a2',
@@ -113,7 +106,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -122,7 +115,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -131,7 +124,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -140,7 +133,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -149,7 +142,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -158,7 +151,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -167,16 +160,16 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
                 {    
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'h2',
                     playerOwned: 'white',
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whitePawn.png')
+                    image: "url('src/assets/whitePawn.png')"
                 },
 
                 {    
@@ -186,7 +179,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteRook.png')
+                    image: "url('src/assets/whiteRook.png')"
                 },
                 {    
                     type: 'rook',
@@ -195,7 +188,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteRook.png')
+                    image: "url('src/assets/whiteRook.png')"
                 },
 
                 {    
@@ -205,7 +198,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteBishop.png')
+                    image: "url('src/assets/whiteBishop.png')"
                 },
                 {    
                     type: 'bishop',
@@ -214,7 +207,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteBishop.png')
+                    image: "url('src/assets/whiteBishop.png')"
                 },
 
                 {    
@@ -224,7 +217,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteKnight.png')
+                    image: "url('src/assets/whiteKnight.png')"
                 },
                 {    
                     type: 'knight',
@@ -233,7 +226,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteKnight.png')
+                    image: "url('src/assets/whiteKnight.png')"
                 },
 
                 {    
@@ -243,7 +236,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteKing.png')
+                    image: "url('src/assets/whiteKing.png')"
                 },
 
                 {    
@@ -253,11 +246,8 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/whiteQueen.png')
+                    image: "url('src/assets/whiteQueen.png')"
                 },
-            ],
-
-            blackPieces: [
                 {    
                     type: 'pawn',
                     position: 'a7',
@@ -265,7 +255,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -274,7 +264,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -283,7 +273,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -292,7 +282,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -301,7 +291,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -310,7 +300,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -319,7 +309,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
                 {    
                     type: 'pawn',
@@ -328,17 +318,17 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackPawn.png')
+                    image: "url('src/assets/blackPawn.png')"
                 },
 
                 {    
-                    type: 'rook',
+                    type: 'Rook',
                     position: 'a8',
                     playerOwned: 'black',
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackRook.png')
+                    image: "url('src/assets/blackRook.png')"
                 },
                 {    
                     type: 'rook',
@@ -347,7 +337,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackRook.png')
+                    image: "url('src/assets/blackRook.png')"
                 },
 
                 {    
@@ -357,7 +347,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackBishop.png')
+                    image: "url('src/assets/blackBishop.png')"
                 },
                 {    
                     type: 'bishop',
@@ -366,7 +356,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackBishop.png')
+                    image: "url('src/assets/blackBishop.png')"
                 },
 
                 {    
@@ -376,7 +366,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackKnight.png')
+                    image: "url('src/assets/blackKnight.png')"
                 },
                 {    
                     type: 'knight',
@@ -385,7 +375,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackKnight.png')
+                    image: "url('src/assets/blackKnight.png')"
                 },
 
                 {    
@@ -395,7 +385,7 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackKing.png')
+                    image: "url('src/assets/blackKing.png')"
                 },
 
                 {    
@@ -405,18 +395,52 @@ export default {
                     possibleMoves: null,
                     isCaptured: false,
                     hasMoved: false,
-                    image: ('src/assets/blackQueen.png')
+                    image: "url('src/assets/blackQueen.png')"
                 },
-            ]
+            ],
+            listOfElements: null,
+            testElement: null,
 
         }
     },
+    // mounted: {
+    //     listOfElements: document.getElementsByClassName("row"),
+    //     connectPieceIdWithRowId(){
+    //         for (element in this.listOfElements) {
+    //             for (piece in whitePieces) {
+    //                 if (piece.position === element.id) {
+    //                     element.classList.add(piece.playerOwned+piece.type)
+    //                 }
+    //             }
+    //         }
+    //     }
+    // },
 
     methods: {
         handleClick() {
-
-        }
-    }
+            
+    },
+    setBoard(){
+        this.listOfElements = document.getElementsByClassName("row");
+            this.testElement = this.listOfElements[0];
+            for (let i = 0; i < this.listOfElements.length; i++) {
+                let currentElement = this.listOfElements[i]
+                for (let j = 0; j < this.pieces.length; j++) {
+                    if (this.pieces[j].position === this.listOfElements[i].id) {
+                        let currentPiece = this.pieces[j];
+                        currentElement.classList.add(currentPiece.playerOwned+currentPiece.type);
+                        currentElement.style.backgroundImage = currentPiece.image;
+                        currentElement.style.backgroundSize = "75%";
+                        currentElement.style.backgroundRepeat = "no-repeat";
+                        currentElement.style.backgroundPosition = "center";
+                    }
+                }
+            }
+    },
+        },
+    mounted() {
+        this.setBoard();
+    },
 }
 
 </script>
@@ -462,7 +486,7 @@ export default {
 }
 
 .even {
-    background-color: black;
+    background-color: grey;
 }
 
 .odd {
