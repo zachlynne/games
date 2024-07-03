@@ -6,7 +6,7 @@
     <main>
         <!-- board assignment coinsides with A to H and 1 to 8 for referencing moves -->
         <div class="board">
-          
+
             <div class="column" v-on:click="handleClick">
                 <div class="row odd" id="a8"></div>
                 <div class="row even" id="a7"></div>
@@ -94,12 +94,12 @@
 <script>
 
 export default {
-    
-    data () {
+
+    data() {
         return {
 
             pieces: [
-                {    
+                {
                     type: 'pawn',
                     position: 'a2',
                     playerOwned: 'white',
@@ -108,7 +108,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'b2',
                     playerOwned: 'white',
@@ -117,7 +117,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'c2',
                     playerOwned: 'white',
@@ -126,7 +126,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'd2',
                     playerOwned: 'white',
@@ -135,7 +135,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'e2',
                     playerOwned: 'white',
@@ -144,7 +144,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'f2',
                     playerOwned: 'white',
@@ -153,7 +153,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'g2',
                     playerOwned: 'white',
@@ -162,7 +162,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
-                {    
+                {
                     type: 'Pawn',
                     position: 'h2',
                     playerOwned: 'white',
@@ -172,7 +172,7 @@ export default {
                     image: "url('src/assets/whitePawn.png')"
                 },
 
-                {    
+                {
                     type: 'rook',
                     position: 'a1',
                     playerOwned: 'white',
@@ -181,7 +181,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whiteRook.png')"
                 },
-                {    
+                {
                     type: 'rook',
                     position: 'h1',
                     playerOwned: 'white',
@@ -191,7 +191,7 @@ export default {
                     image: "url('src/assets/whiteRook.png')"
                 },
 
-                {    
+                {
                     type: 'bishop',
                     position: 'b1',
                     playerOwned: 'white',
@@ -200,7 +200,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whiteBishop.png')"
                 },
-                {    
+                {
                     type: 'bishop',
                     position: 'g1',
                     playerOwned: 'white',
@@ -210,7 +210,7 @@ export default {
                     image: "url('src/assets/whiteBishop.png')"
                 },
 
-                {    
+                {
                     type: 'knight',
                     position: 'c1',
                     playerOwned: 'white',
@@ -219,7 +219,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whiteKnight.png')"
                 },
-                {    
+                {
                     type: 'knight',
                     position: 'f1',
                     playerOwned: 'white',
@@ -229,7 +229,7 @@ export default {
                     image: "url('src/assets/whiteKnight.png')"
                 },
 
-                {    
+                {
                     type: 'king',
                     position: 'e1',
                     playerOwned: 'white',
@@ -239,7 +239,7 @@ export default {
                     image: "url('src/assets/whiteKing.png')"
                 },
 
-                {    
+                {
                     type: 'queen',
                     position: 'd1',
                     playerOwned: 'white',
@@ -248,7 +248,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/whiteQueen.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'a7',
                     playerOwned: 'black',
@@ -257,7 +257,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'b7',
                     playerOwned: 'black',
@@ -266,7 +266,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'c7',
                     playerOwned: 'black',
@@ -275,7 +275,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'd7',
                     playerOwned: 'black',
@@ -284,7 +284,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'e7',
                     playerOwned: 'black',
@@ -293,7 +293,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'f7',
                     playerOwned: 'black',
@@ -302,7 +302,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'g7',
                     playerOwned: 'black',
@@ -311,7 +311,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
-                {    
+                {
                     type: 'pawn',
                     position: 'h7',
                     playerOwned: 'black',
@@ -321,7 +321,7 @@ export default {
                     image: "url('src/assets/blackPawn.png')"
                 },
 
-                {    
+                {
                     type: 'Rook',
                     position: 'a8',
                     playerOwned: 'black',
@@ -330,7 +330,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackRook.png')"
                 },
-                {    
+                {
                     type: 'rook',
                     position: 'h8',
                     playerOwned: 'black',
@@ -340,7 +340,7 @@ export default {
                     image: "url('src/assets/blackRook.png')"
                 },
 
-                {    
+                {
                     type: 'bishop',
                     position: 'b8',
                     playerOwned: 'black',
@@ -349,7 +349,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackBishop.png')"
                 },
-                {    
+                {
                     type: 'bishop',
                     position: 'g8',
                     playerOwned: 'black',
@@ -359,7 +359,7 @@ export default {
                     image: "url('src/assets/blackBishop.png')"
                 },
 
-                {    
+                {
                     type: 'knight',
                     position: 'c8',
                     playerOwned: 'black',
@@ -368,7 +368,7 @@ export default {
                     hasMoved: false,
                     image: "url('src/assets/blackKnight.png')"
                 },
-                {    
+                {
                     type: 'knight',
                     position: 'f8',
                     playerOwned: 'black',
@@ -378,7 +378,7 @@ export default {
                     image: "url('src/assets/blackKnight.png')"
                 },
 
-                {    
+                {
                     type: 'king',
                     position: 'e8',
                     playerOwned: 'black',
@@ -388,7 +388,7 @@ export default {
                     image: "url('src/assets/blackKing.png')"
                 },
 
-                {    
+                {
                     type: 'queen',
                     position: 'd8',
                     playerOwned: 'black',
@@ -400,35 +400,28 @@ export default {
             ],
             listOfElements: null,
             testElement: null,
+            pieceMoving: null,
 
         }
     },
-    // mounted: {
-    //     listOfElements: document.getElementsByClassName("row"),
-    //     connectPieceIdWithRowId(){
-    //         for (element in this.listOfElements) {
-    //             for (piece in whitePieces) {
-    //                 if (piece.position === element.id) {
-    //                     element.classList.add(piece.playerOwned+piece.type)
-    //                 }
-    //             }
-    //         }
-    //     }
-    // },
 
     methods: {
-        handleClick() {
-            
-    },
-    setBoard(){
-        this.listOfElements = document.getElementsByClassName("row");
+        handleClick(event) {
+            if (this.pieceMoving === null){
+                this.pickPiece(event);
+            } else {
+                this.movePiece(event);
+            }
+        },
+        setBoard() {
+            this.listOfElements = document.getElementsByClassName("row");
             this.testElement = this.listOfElements[0];
             for (let i = 0; i < this.listOfElements.length; i++) {
                 let currentElement = this.listOfElements[i]
                 for (let j = 0; j < this.pieces.length; j++) {
                     if (this.pieces[j].position === this.listOfElements[i].id) {
                         let currentPiece = this.pieces[j];
-                        currentElement.classList.add(currentPiece.playerOwned+currentPiece.type);
+                        currentElement.classList.add(currentPiece.playerOwned + currentPiece.type);
                         currentElement.style.backgroundImage = currentPiece.image;
                         currentElement.style.backgroundSize = "75%";
                         currentElement.style.backgroundRepeat = "no-repeat";
@@ -436,8 +429,21 @@ export default {
                     }
                 }
             }
-    },
         },
+        movePiece(event) {
+            let newElement = event.target;
+
+            this.pieces.find( (piece) => piece.position === this.pieceMoving.position).position = newElement.id;
+            
+            this.setBoard();
+
+        },
+        pickPiece(event) {
+            let element = event.target;
+
+            this.pieceMoving = this.pieces.find( (piece) => piece.position === element.id) 
+        }
+    },
     mounted() {
         this.setBoard();
     },

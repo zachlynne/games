@@ -11,6 +11,10 @@
             <RouterLink to="/connect-four">
                 <img class="connect-four" src="../assets/connect four.PNG" alt="connect-four" title="Connect Four">
             </RouterLink>
+
+            <RouterLink to="/chess">
+                <img class="connect-four" src="../assets/chess.PNG" alt="chess" title="chess">
+            </RouterLink>
         </div>
     </div>
 </template>
