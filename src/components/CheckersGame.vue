@@ -540,6 +540,11 @@ export default {
 <style scoped>
 /* Style for each of the columns on the board */
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
 .board {
     display: flex;
 

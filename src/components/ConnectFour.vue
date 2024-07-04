@@ -6,7 +6,7 @@
         <h4 v-if="gameOver">Game Over! {{ winner }} wins!</h4>
     </div>
 
-
+<main>
     <div class="board">
         <!-- This creates the elements in the board by section -->
         <section class="column" v-on:click="playChip">
@@ -67,6 +67,7 @@
         </section>
 
     </div>
+</main>
 
 </template>
 
@@ -199,9 +200,15 @@ export default {
 
 <style scoped>
 /* Style for the board */
+
+main {
+
+    display: flex;
+    justify-content: center;
+
+}
 .board {
     display: flex;
-
     flex-direction: row;
 
     height: fit-content;

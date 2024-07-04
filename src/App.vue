@@ -6,42 +6,53 @@ RouterLink
 
 <template>
   <header>
-
+    <nav>
+      <router-link v-bind:to="{ name: 'home' }" exact> <img src="..\src\yeoldgameslogo.PNG"/></router-link>
+      <router-link v-bind:to="{ name: 'checkers' }">Checkers</router-link>
+      <router-link v-bind:to="{ name: 'connect-four' }">Connect Four</router-link>
+      <router-link v-bind:to="{ name: 'chess' }">Chess</router-link>
+    </nav>
   </header>
-
-  <main>
-    <div>
-      <nav>
-            <router-link v-bind:to="{ name: 'home'}" exact>Home</router-link>
-            <router-link v-bind:to="{ name: 'checkers'}">Checkers</router-link>
-            <router-link v-bind:to="{ name: 'connect-four'}">Connect Four</router-link>
-            <router-link v-bind:to="{ name: 'chess'}">Chess</router-link>
-        </nav>
-        <router-view></router-view>
-    </div>
-    
-  </main>
-
   
+  <main class="display">
+    <router-view></router-view>
+  </main>
 
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+
+/* this main controls A LOT */
+img {
+  width: 100%;
+  height: 100px;
 }
 
-.logo {
+.display {
   display: block;
-  margin: 0 auto 2rem;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  
 }
+
+header {
+  line-height: 1.5;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 5%;
+}
+
 
 nav {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  font-size: 1.3rem;
+  text-align: left;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+
 }
 
 nav a.router-link-exact-active {
@@ -62,16 +73,11 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
+@media () {
   header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    display: inline-block;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 
   header .wrapper {
     display: flex;

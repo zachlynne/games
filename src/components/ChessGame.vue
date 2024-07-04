@@ -434,7 +434,7 @@ export default {
             let newElement = event.target;
 
             this.pieces.find( (piece) => piece.position === this.pieceMoving.position).position = newElement.id;
-            
+
             this.setBoard();
 
         },
@@ -454,6 +454,11 @@ export default {
 
 <style scoped>
 /* Style for each of the columns on the board */
+
+main {
+    display: flex;
+    justify-content: center;
+}
 
 .board {
     display: flex;
@@ -504,5 +509,10 @@ export default {
     border-radius: 50%;
     scale: 25%;
     opacity: 0.5;
+}
+
+main {
+    margin: auto;
+    
 }
 </style>
