@@ -100,64 +100,64 @@ export default {
 
             pieces: [
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'a2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'b2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'c2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'd2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'e2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'f2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'g2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
@@ -166,156 +166,156 @@ export default {
                     type: 'Pawn',
                     position: 'h2',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whitePawn.png')"
                 },
 
                 {
-                    type: 'rook',
+                    type: 'Rook',
                     position: 'a1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteRook.png')"
                 },
                 {
-                    type: 'rook',
+                    type: 'Rook',
                     position: 'h1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteRook.png')"
                 },
 
                 {
-                    type: 'bishop',
+                    type: 'Bishop',
                     position: 'b1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteBishop.png')"
                 },
                 {
-                    type: 'bishop',
+                    type: 'Bishop',
                     position: 'g1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteBishop.png')"
                 },
 
                 {
-                    type: 'knight',
+                    type: 'Knight',
                     position: 'c1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteKnight.png')"
                 },
                 {
-                    type: 'knight',
+                    type: 'Knight',
                     position: 'f1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteKnight.png')"
                 },
 
                 {
-                    type: 'king',
+                    type: 'King',
                     position: 'e1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteKing.png')"
                 },
 
                 {
-                    type: 'queen',
+                    type: 'Queen',
                     position: 'd1',
                     playerOwned: 'white',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/whiteQueen.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'a7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'b7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'c7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'd7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'e7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'f7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'g7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
                 },
                 {
-                    type: 'pawn',
+                    type: 'Pawn',
                     position: 'h7',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackPawn.png')"
@@ -325,74 +325,74 @@ export default {
                     type: 'Rook',
                     position: 'a8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackRook.png')"
                 },
                 {
-                    type: 'rook',
+                    type: 'Rook',
                     position: 'h8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackRook.png')"
                 },
 
                 {
-                    type: 'bishop',
+                    type: 'Bishop',
                     position: 'b8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackBishop.png')"
                 },
                 {
-                    type: 'bishop',
+                    type: 'Bishop',
                     position: 'g8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackBishop.png')"
                 },
 
                 {
-                    type: 'knight',
+                    type: 'Knight',
                     position: 'c8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackKnight.png')"
                 },
                 {
-                    type: 'knight',
+                    type: 'Knight',
                     position: 'f8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackKnight.png')"
                 },
 
                 {
-                    type: 'king',
+                    type: 'King',
                     position: 'e8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackKing.png')"
                 },
 
                 {
-                    type: 'queen',
+                    type: 'Queen',
                     position: 'd8',
                     playerOwned: 'black',
-                    possibleMoves: null,
+                    possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
                     image: "url('src/assets/blackQueen.png')"
@@ -401,6 +401,8 @@ export default {
             listOfElements: null,
             testElement: null,
             pieceMoving: null,
+            previousElement: null,
+            currentPlayer: 'white',
 
         }
     },
@@ -412,6 +414,7 @@ export default {
             } else {
                 this.movePiece(event);
             }
+
         },
         setBoard() {
             this.listOfElements = document.getElementsByClassName("row");
@@ -421,27 +424,119 @@ export default {
                 for (let j = 0; j < this.pieces.length; j++) {
                     if (this.pieces[j].position === this.listOfElements[i].id) {
                         let currentPiece = this.pieces[j];
+
+                        // add class property of the unique piece (ie. "blackPawn") - controls movement ruleset
                         currentElement.classList.add(currentPiece.playerOwned + currentPiece.type);
-                        currentElement.style.backgroundImage = currentPiece.image;
-                        currentElement.style.backgroundSize = "75%";
-                        currentElement.style.backgroundRepeat = "no-repeat";
-                        currentElement.style.backgroundPosition = "center";
+
+                        // add class property of the player owning the piece (ie. "black") - controls access based on player's turn
+                        currentElement.classList.add(currentPiece.playerOwned);
                     }
                 }
             }
         },
         movePiece(event) {
+            // define new (second) click as target to move to
             let newElement = event.target;
 
-            this.pieces.find( (piece) => piece.position === this.pieceMoving.position).position = newElement.id;
+            // set moving piece's position to the clicked space
+            this.pieceMoving.position = newElement.id;
 
-            this.setBoard();
+            // remove piece from original position on the board
+            // example - remove class "black" + "Pawn"
+            this.previousElement.classList.remove(this.pieceMoving.playerOwned + this.pieceMoving.type);
+            // remove playerOwned from space
+            this.previousElement.classList.remove(this.pieceMoving.playerOwned);
+
+            // remove all css (class assignments) from the board
+            this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+
+                    document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.remove("possibleMove");
+
+                });
+
+            // reset possible moves array    
+            this.pieceMoving.possibleMoves = new Array();
+
+            // add the removed class (ie. blackPawn) to the newly selected element (space)
+            newElement.classList.add(this.pieceMoving.playerOwned + this.pieceMoving.type);
+            // add the removed playerOwned tag to the new space
+            newElement.classList.add(this.pieceMoving.playerOwned);
+
+            // set hasMoved for the piece being moved to true to block special moves in the future
+            this.pieceMoving.hasMoved = true;
+
+            // piece has moved, so set pieceMoving to null - prevents multiple moves in one turn
+            this.pieceMoving = null;
+
+            // if current player is white, make it black (and vice versa) -- set result to currentPlayer
+            this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
 
         },
         pickPiece(event) {
+
+            // select a piece to move by clicking on a square (board space)
             let element = event.target;
 
-            this.pieceMoving = this.pieces.find( (piece) => piece.position === element.id) 
+            // set reference to piece selected for removal in move piece function
+            this.previousElement = element;
+
+            // if the board space clicked on contains a piece owned by the current player ...
+            if(element.classList.contains(this.currentPlayer)) {
+
+                // pull location data (ie. 'a2') from the square that was clicked
+                this.pieceMoving = this.pieces.find( (piece) => piece.position === element.id);
+
+                if(this.pieceMoving.type === 'Pawn') {
+                    this.showPossibleMovesPawn();
+                }
+
+            }
+        },
+
+        showPossibleMovesPawn() {
+
+            // define row and column locations
+            let currentColumn = this.pieceMoving.position.charAt(0);
+            let currentRow = parseInt(this.pieceMoving.position.charAt(1));
+
+            // show possible moves based on white / black orientation
+            if(this.pieceMoving.playerOwned === 'white') {
+
+                // add normal movement
+                this.pieceMoving.possibleMoves.push( [currentColumn, currentRow + 1] );
+                
+                // add special movement for pawns that have not yet moved
+                if(this.pieceMoving.hasMoved === false) {
+                    this.pieceMoving.possibleMoves.push( [currentColumn, currentRow + 2] );
+                }
+                
+                // for each move allowed by the piece, highlight that cell with a green border
+                this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+
+                    document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.add("possibleMove");
+
+                }); 
+                    
+            }
+            else if(this.pieceMoving.playerOwned === 'black') {
+
+                // add normal movement
+                this.pieceMoving.possibleMoves.push( [currentColumn, currentRow - 1] );
+                
+                // add special movement for pawns that have not yet moved
+                if(this.pieceMoving.hasMoved === false) {
+                    this.pieceMoving.possibleMoves.push( [currentColumn, currentRow - 2] );
+                }
+                
+                // for each move allowed by the piece, highlight that cell with a green border
+                this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+
+                    document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.add("possibleMove");
+
+                }); 
+
+
+            }
         }
     },
     mounted() {
@@ -505,14 +600,96 @@ main {
 }
 
 .possibleMove {
-    background-color: green;
-    border-radius: 50%;
-    scale: 25%;
-    opacity: 0.5;
+    border: 10px solid green;
+
 }
 
 main {
     margin: auto;
-    
 }
+
+.blackPawn {
+    background-image: url(src/assets/blackPawn.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blackBishop {
+    background-image: url(src/assets/blackBishop.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blackKing {
+    background-image: url(src/assets/blackKing.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blackKnight {
+    background-image: url(src/assets/blackKnight.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blackQueen {
+    background-image: url(src/assets/blackQueen.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blackRook {
+    background-image: url(src/assets/blackRook.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.whiteBishop {
+    background-image: url(src/assets/whiteBishop.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.whiteKing {
+    background-image: url(src/assets/whiteKing.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.whiteKnight {
+    background-image: url(src/assets/whiteKnight.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.whitePawn {
+    background-image: url(src/assets/whitePawn.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.whiteQueen {
+    background-image: url(src/assets/whiteQueen.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.whiteRook {
+    background-image: url(src/assets/whiteRook.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 </style>
