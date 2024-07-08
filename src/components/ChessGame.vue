@@ -403,13 +403,14 @@ export default {
             pieceMoving: null,
             previousElement: null,
             currentPlayer: 'white',
+            otherPlayer: 'black',
 
         }
     },
 
     methods: {
         handleClick(event) {
-            if (this.pieceMoving === null){
+            if (this.pieceMoving === null) {
                 this.pickPiece(event);
             } else {
                 this.movePiece(event);
@@ -439,10 +440,10 @@ export default {
             let newElement = event.target;
 
             // allow user to deselect / reset the picked piece
-            if(newElement.id === this.pieceMoving.position) {   // if newly clicked cell is the same as the picked piece
-                
-                this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
-                    document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.remove("possibleMove");
+            if (newElement.id === this.pieceMoving.position) {   // if newly clicked cell is the same as the picked piece
+
+                this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
+                    document.getElementById(moveAllowed[0] + moveAllowed[1]).classList.remove("possibleMove");
                 });
 
                 this.pieceMoving.possibleMoves = new Array();   // set possibleMoves array to empty
@@ -451,10 +452,10 @@ export default {
             }
 
             // check clicked location against possibleMoves( moves allowed )
-            this.pieceMoving.possibleMoves.forEach( (possibleMove) => {
+            this.pieceMoving.possibleMoves.forEach((possibleMove) => {
 
                 // conditional to control move piece only if within possibleMoves 
-                if(newElement.id === (possibleMove[0]+possibleMove[1]) ) {
+                if (newElement.id === (possibleMove[0] + possibleMove[1])) {
 
                     // set moving piece's position to the clicked space
                     this.pieceMoving.position = newElement.id;
@@ -466,11 +467,11 @@ export default {
                     this.previousElement.classList.remove(this.pieceMoving.playerOwned);
 
                     // remove all css (class assignments) from the board FOR POSSIBLE MOVES (GREEN SQUARES)
-                    this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+                    this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
 
-                            document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.remove("possibleMove");
+                        document.getElementById(moveAllowed[0] + moveAllowed[1]).classList.remove("possibleMove");
 
-                        });
+                    });
 
                     // reset possible moves array    
                     this.pieceMoving.possibleMoves = new Array();
@@ -487,6 +488,7 @@ export default {
                     this.pieceMoving = null;
 
                     // if current player is white, make it black (and vice versa) -- set result to currentPlayer
+                    this.otherPlayer = this.currentPlayer;
                     this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
 
                 }
@@ -501,14 +503,19 @@ export default {
             this.previousElement = element;
 
             // if the board space clicked on contains a piece owned by the current player ...
-            if(element.classList.contains(this.currentPlayer)) {
+            if (element.classList.contains(this.currentPlayer)) {
 
                 // pull location data (ie. 'a2') from the square that was clicked
-                this.pieceMoving = this.pieces.find( (piece) => piece.position === element.id);
+                this.pieceMoving = this.pieces.find((piece) => piece.position === element.id);
 
-                if(this.pieceMoving.type === 'Pawn') {
+                if (this.pieceMoving.type === 'Pawn') {
                     this.showPossibleMovesPawn();
                 }
+
+                if (this.pieceMoving.type === "Rook") {  // else if ???
+                    this.showPossibleMovesRook();
+                }
+
 
             }
         },
@@ -520,50 +527,95 @@ export default {
             let currentRow = parseInt(this.pieceMoving.position.charAt(1));
 
             // show possible moves based on white / black orientation
-            if(this.pieceMoving.playerOwned === 'white') {
+            if (this.pieceMoving.playerOwned === 'white') {
 
                 // add normal movement
-                this.pieceMoving.possibleMoves.push( [currentColumn, currentRow + 1] );
-                
+                this.pieceMoving.possibleMoves.push([currentColumn, currentRow + 1]);
+
                 // add special movement for pawns that have not yet moved
-                if(this.pieceMoving.hasMoved === false) {
-                    this.pieceMoving.possibleMoves.push( [currentColumn, currentRow + 2] );
+                if (this.pieceMoving.hasMoved === false) {
+                    this.pieceMoving.possibleMoves.push([currentColumn, currentRow + 2]);
                 }
-                
+
                 // for each move allowed by the piece, highlight that cell with a green border
-                this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+                this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
 
-                    document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.add("possibleMove");
+                    document.getElementById(moveAllowed[0] + moveAllowed[1]).classList.add("possibleMove");
 
-                }); 
-                    
+                });
+
             }
-            else if(this.pieceMoving.playerOwned === 'black') {
+            else if (this.pieceMoving.playerOwned === 'black') {
 
                 // add normal movement
-                this.pieceMoving.possibleMoves.push( [currentColumn, currentRow - 1] );
-                
+                this.pieceMoving.possibleMoves.push([currentColumn, currentRow - 1]);
+
                 // add special movement for pawns that have not yet moved
-                if(this.pieceMoving.hasMoved === false) {
-                    this.pieceMoving.possibleMoves.push( [currentColumn, currentRow - 2] );
+                if (this.pieceMoving.hasMoved === false) {
+                    this.pieceMoving.possibleMoves.push([currentColumn, currentRow - 2]);
                 }
-                
+
                 // for each move allowed by the piece, highlight that cell with a green border
-                this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+                this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
 
-                    document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.add("possibleMove");
+                    document.getElementById(moveAllowed[0] + moveAllowed[1]).classList.add("possibleMove");
 
-                }); 
+                });
+            }
+        },
 
+        showPossibleMovesRook() {
+
+            // define row and column location of pieceMoving
+            let currentColumn = this.pieceMoving.position.charAt(0);
+            let currentRow = parseInt(this.pieceMoving.position.charAt(1));
+
+            // possibleMoves evaluation, moving vertical & upward
+            for (let i = 1; i <= 8 - currentRow; i++) {
+
+                let element = document.getElementById(currentColumn + (currentRow + i));
+
+                if (element.classList.contains(this.currentPlayer)) {
+                    break;
+                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
+                    element.classList.add("possibleMove");                                  // adds css to cell
+                    this.pieceMoving.possibleMoves.push(currentColumn + (currentRow + i));    // adds cell to list of possible moves within object
+                    break;
+                } else {
+                    element.classList.add("possibleMove");
+                    this.pieceMoving.possibleMoves.push(currentColumn + (currentRow + i));
+                }
 
             }
+
+            // possibleMoves evaluation, moving vertical & downward
+            for (let i = 1; i < currentRow; i++) {
+
+                let element = document.getElementById(currentColumn + (currentRow - i));
+
+                if (element.classList.contains(this.currentPlayer)) {
+                    break;
+                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
+                    element.classList.add("possibleMove");                                  // adds css to cell
+                    this.pieceMoving.possibleMoves.push(currentColumn + (currentRow - i));    // adds cell to list of possible moves within object
+                    break;
+                } else {
+                    element.classList.add("possibleMove");
+                    this.pieceMoving.possibleMoves.push(currentColumn + (currentRow - i));
+                }
+
+            }
+
+            // possibleMoves evaluation, moving horizontal & to the right --- NEEDS REFACTOR IN ORDER TO AVOID LETTER ASSIGNMENTS !!!!!!!!!!!!!!!!!!!!!!!!
+
         }
+
     },
+
     mounted() {
         this.setBoard();
-    },
+    }
 }
-
 </script>
 
 
@@ -711,5 +763,4 @@ main {
     background-repeat: no-repeat;
     background-position: center;
 }
-
 </style>
