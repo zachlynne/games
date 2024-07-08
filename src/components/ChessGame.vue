@@ -450,8 +450,6 @@ export default {
                 return;
             }
 
-
-
             // check clicked location against possibleMoves( moves allowed )
             this.pieceMoving.possibleMoves.forEach( (possibleMove) => {
 
