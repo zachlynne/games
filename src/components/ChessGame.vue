@@ -438,39 +438,61 @@ export default {
             // define new (second) click as target to move to
             let newElement = event.target;
 
-            // set moving piece's position to the clicked space
-            this.pieceMoving.position = newElement.id;
-
-            // remove piece from original position on the board
-            // example - remove class "black" + "Pawn"
-            this.previousElement.classList.remove(this.pieceMoving.playerOwned + this.pieceMoving.type);
-            // remove playerOwned from space
-            this.previousElement.classList.remove(this.pieceMoving.playerOwned);
-
-            // remove all css (class assignments) from the board
-            this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
-
+            // allow user to deselect / reset the picked piece
+            if(newElement.id === this.pieceMoving.position) {   // if newly clicked cell is the same as the picked piece
+                
+                this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
                     document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.remove("possibleMove");
-
                 });
 
-            // reset possible moves array    
-            this.pieceMoving.possibleMoves = new Array();
+                this.pieceMoving.possibleMoves = new Array();   // set possibleMoves array to empty
+                this.pieceMoving = null;                        // set pieceMoving to null to reset handleClick trigger
+                return;
+            }
 
-            // add the removed class (ie. blackPawn) to the newly selected element (space)
-            newElement.classList.add(this.pieceMoving.playerOwned + this.pieceMoving.type);
-            // add the removed playerOwned tag to the new space
-            newElement.classList.add(this.pieceMoving.playerOwned);
 
-            // set hasMoved for the piece being moved to true to block special moves in the future
-            this.pieceMoving.hasMoved = true;
 
-            // piece has moved, so set pieceMoving to null - prevents multiple moves in one turn
-            this.pieceMoving = null;
+            // check clicked location against possibleMoves( moves allowed )
+            this.pieceMoving.possibleMoves.forEach( (possibleMove) => {
 
-            // if current player is white, make it black (and vice versa) -- set result to currentPlayer
-            this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
+                // conditional to control move piece only if within possibleMoves 
+                if(newElement.id === (possibleMove[0]+possibleMove[1]) ) {
 
+                    // set moving piece's position to the clicked space
+                    this.pieceMoving.position = newElement.id;
+
+                    // remove piece from original position on the board
+                    // example - remove class "black" + "Pawn"
+                    this.previousElement.classList.remove(this.pieceMoving.playerOwned + this.pieceMoving.type);
+                    // remove playerOwned from space
+                    this.previousElement.classList.remove(this.pieceMoving.playerOwned);
+
+                    // remove all css (class assignments) from the board FOR POSSIBLE MOVES (GREEN SQUARES)
+                    this.pieceMoving.possibleMoves.forEach( (moveAllowed) => {
+
+                            document.getElementById(moveAllowed[0]+moveAllowed[1]).classList.remove("possibleMove");
+
+                        });
+
+                    // reset possible moves array    
+                    this.pieceMoving.possibleMoves = new Array();
+
+                    // add the removed class (ie. blackPawn) to the newly selected element (space)
+                    newElement.classList.add(this.pieceMoving.playerOwned + this.pieceMoving.type);
+                    // add the removed playerOwned tag to the new space
+                    newElement.classList.add(this.pieceMoving.playerOwned);
+
+                    // set hasMoved for the piece being moved to true to block special moves in the future
+                    this.pieceMoving.hasMoved = true;
+
+                    // piece has moved, so set pieceMoving to null - prevents multiple moves in one turn
+                    this.pieceMoving = null;
+
+                    // if current player is white, make it black (and vice versa) -- set result to currentPlayer
+                    this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
+
+                }
+            });
         },
         pickPiece(event) {
 
