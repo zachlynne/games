@@ -401,9 +401,12 @@ export default {
             listOfElements: null,
             testElement: null,
             pieceMoving: null,
+            pieceCaptured: null,
             previousElement: null,
             currentPlayer: 'white',
             otherPlayer: 'black',
+            allPossibleMovesBlack: null,
+            allPossibleMovesWhite: null,
             rowArray: ["1", "2", "3", "4", "5", "6", "7", "8"],
             columnArray: ["a", "b", "c", "d", "e", "f", "g", "h"],
         }
@@ -435,6 +438,9 @@ export default {
                     }
                 }
             }
+
+            this.populateAllPossibleMoves();
+
         },
         movePiece(event) {
             // define new (second) click as target to move to
@@ -444,7 +450,7 @@ export default {
             if (newElement.id === this.pieceMoving.position) {   // if newly clicked cell is the same as the picked piece
 
                 this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
-                    document.getElementById(moveAllowed[0] + moveAllowed[1]).classList.remove("possibleMove");
+                    document.getElementById(moveAllowed).classList.remove("possibleMove");
                 });
 
                 this.pieceMoving.possibleMoves = new Array();   // set possibleMoves array to empty
@@ -456,7 +462,7 @@ export default {
             this.pieceMoving.possibleMoves.forEach((possibleMove) => {
 
                 // conditional to control move piece only if within possibleMoves 
-                if (newElement.id === (possibleMove[0] + possibleMove[1])) {
+                if (newElement.id === (possibleMove)) {
 
                     // set moving piece's position to the clicked space
                     this.pieceMoving.position = newElement.id;
@@ -470,7 +476,7 @@ export default {
                     // remove all css (class assignments) from the board FOR POSSIBLE MOVES (GREEN SQUARES)
                     this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
 
-                        document.getElementById(moveAllowed[0] + moveAllowed[1]).classList.remove("possibleMove");
+                        document.getElementById(moveAllowed).classList.remove("possibleMove");
 
                     });
 
@@ -488,12 +494,28 @@ export default {
                     // piece has moved, so set pieceMoving to null - prevents multiple moves in one turn
                     this.pieceMoving = null;
 
+
+                    // capture logic
+                    if (newElement.classList.contains(this.otherPlayer)) {
+
+                        // pull location data (ie. 'a2') from the square that was clicked
+                        this.pieceCaptured = this.pieces.find((piece) => piece.position === newElement.id && piece.playerOwned === this.otherPlayer);
+
+                        newElement.classList.remove(this.pieceCaptured.playerOwned + this.pieceCaptured.type);
+
+                        newElement.classList.remove(this.pieceCaptured.playerOwned);
+
+                    }
+
                     // if current player is white, make it black (and vice versa) -- set result to currentPlayer
                     this.otherPlayer = this.currentPlayer;
                     this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
 
                 }
             });
+
+            this.populateAllPossibleMoves();
+
         },
         pickPiece(event) {
 
@@ -509,97 +531,171 @@ export default {
                 // pull location data (ie. 'a2') from the square that was clicked
                 this.pieceMoving = this.pieces.find((piece) => piece.position === element.id);
 
-                if (this.pieceMoving.type === "Pawn") {
-                    this.showPossibleMovesPawn();
-                }
-
-                if (this.pieceMoving.type === "Rook") {
-                    this.showPossibleMovesRook();
-                }
-
-                if (this.pieceMoving.type === "Bishop") {
-                    this.showPossibleMovesBishop();
-                }
-
-                if (this.pieceMoving.type === "Queen") {
-                    this.showPossibleMovesQueen();
-                }
-
-                if (this.pieceMoving.type === "Knight") {
-                    this.showPossibleMovesKnight();
-                }
-
-                if (this.pieceMoving.type === "King") {
-                    this.showPossibleMovesKing();
-                }
+                // for each move allowed by the piece, highlight that cell with a green border
+                this.displayPiecesPossibleMoves();
 
             }
+
         },
 
-        showPossibleMovesPawn() {
+        populateAllPossibleMoves() {
+
+            this.pieces.forEach((piece) => {
+
+                piece.possibleMoves = new Array();
+
+                if (piece.type === "Pawn") {
+                    this.showPossibleMovesPawn(piece);
+                }
+
+                if (piece.type === "Rook") {
+                    this.showPossibleMovesRook(piece);
+                }
+
+                if (piece.type === "Bishop") {
+                    this.showPossibleMovesBishop(piece);
+                }
+
+                if (piece.type === "Queen") {
+                    this.showPossibleMovesQueen(piece);
+                }
+
+                if (piece.type === "Knight") {
+                    this.showPossibleMovesKnight(piece);
+                }
+
+                if (piece.type === "King") {
+                    this.showPossibleMovesKing(piece);
+                }
+
+            });
+
+        },
+
+        displayPiecesPossibleMoves() {
+
+            // for each move allowed by the piece, highlight that cell with a green border
+            this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
+
+                document.getElementById(moveAllowed).classList.add("possibleMove");
+
+            });
+
+        },
+
+        showPossibleMovesPawn(piece) {
 
             // define row and column location of pieceMoving
-            let currentColumn = this.columnArray.indexOf(this.pieceMoving.position.charAt(0));
-            let currentRow = this.rowArray.indexOf(this.pieceMoving.position.charAt(1));
+            let currentColumn = this.columnArray.indexOf(piece.position.charAt(0));
+            let currentRow = this.rowArray.indexOf(piece.position.charAt(1));
 
             // show possible moves based on white / black orientation
-            if (this.pieceMoving.playerOwned === 'white') {
+            if (piece.playerOwned === 'white') {
 
-                // add normal movement
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + this.rowArray[currentRow + 1]);
+                // FOR NORMAL MOVEMENT
+                let element = document.getElementById(this.columnArray[currentColumn] + this.rowArray[currentRow + 1]);
 
-                // add special movement for pawns that have not yet moved
-                if (this.pieceMoving.hasMoved === false) {
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + this.rowArray[currentRow + 2]);
+                if (element !== null && !element.classList.contains("black") && !element.classList.contains("white")) {
+
+                    // add normal movement
+                    piece.possibleMoves.push(element.id);
+
                 }
 
-                // for each move allowed by the piece, highlight that cell with a green border
-                this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
+                // reassign element to special move case
+                element = document.getElementById(this.columnArray[currentColumn] + this.rowArray[currentRow + 2]);
 
-                    document.getElementById(moveAllowed).classList.add("possibleMove");
+                // add special movement for pawns that have not yet moved
+                if (element !== null && piece.hasMoved === false && !element.classList.contains("black") && !element.classList.contains("white")) {
 
-                });
+                    piece.possibleMoves.push(element.id);
+
+                }
+
+                // FOR CAPTURE MOVEMENT TO THE LEFT
+                element = document.getElementById(this.columnArray[currentColumn - 1] + this.rowArray[currentRow + 1]);
+
+                if (element !== null && element.classList.contains("black")) {
+
+                    // add normal movement
+                    piece.possibleMoves.push(element.id);
+
+                }
+
+                // FOR CAPTURE MOVEMENT TO THE RIGHT
+                element = document.getElementById(this.columnArray[currentColumn + 1] + this.rowArray[currentRow + 1]);
+
+                if (element !== null && element.classList.contains("black")) {
+
+                    // add normal movement
+                    piece.possibleMoves.push(element.id);
+
+                }
 
             }
-            else if (this.pieceMoving.playerOwned === 'black') {
+            else if (piece.playerOwned === 'black') {
 
-                // add normal movement
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + this.rowArray[currentRow - 1]);
+                // FOR NORMAL MOVEMENT
+                let element = document.getElementById(this.columnArray[currentColumn] + this.rowArray[currentRow - 1]);
 
-                // add special movement for pawns that have not yet moved
-                if (this.pieceMoving.hasMoved === false) {
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + this.rowArray[currentRow - 2]);
+                if (element !== null && !element.classList.contains("black") && !element.classList.contains("white")) {
+
+                    // add normal movement
+                    piece.possibleMoves.push(element.id);
+
                 }
 
-                // for each move allowed by the piece, highlight that cell with a green border
-                this.pieceMoving.possibleMoves.forEach((moveAllowed) => {
+                // reassign element to special case
+                element = document.getElementById(this.columnArray[currentColumn] + this.rowArray[currentRow - 2]);
 
-                    document.getElementById(moveAllowed).classList.add("possibleMove");
+                // add special movement for pawns that have not yet moved
+                if (element !== null && piece.hasMoved === false && !element.classList.contains("black") && !element.classList.contains("white")) {
 
-                });
+                    piece.possibleMoves.push(element.id);
+
+                }
+
+                // FOR CAPTURE MOVEMENT TO THE LEFT
+                element = document.getElementById(this.columnArray[currentColumn - 1] + this.rowArray[currentRow - 1]);
+
+                if (element !== null && element.classList.contains("white")) {
+
+                    // add normal movement
+                    piece.possibleMoves.push(element.id);
+
+                }
+
+                // FOR CAPTURE MOVEMENT TO THE RIGHT
+                element = document.getElementById(this.columnArray[currentColumn + 1] + this.rowArray[currentRow - 1]);
+
+                if (element !== null && element.classList.contains("white")) {
+
+                    // add normal movement
+                    piece.possibleMoves.push(element.id);
+
+                }
             }
         },
 
-        showPossibleMovesRook() {
+        showPossibleMovesRook(piece) {
 
             // define row and column location of pieceMoving
-            let currentColumn = this.columnArray.indexOf(this.pieceMoving.position.charAt(0));
-            let currentRow = this.rowArray.indexOf(this.pieceMoving.position.charAt(1));
+            let currentColumn = this.columnArray.indexOf(piece.position.charAt(0));
+            let currentRow = this.rowArray.indexOf(piece.position.charAt(1));
 
             // possibleMoves evaluation, moving vertical & upward
             for (let i = 1; i < 8 - currentRow; i++) {
-                this.testElement = this.columnArray[currentColumn] + (this.rowArray[currentRow + i]);
+
                 let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
 
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
                 }
 
             }
@@ -612,12 +708,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
                 }
 
             }
@@ -630,12 +726,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                 }
             }
 
@@ -647,21 +743,21 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                 }
             }
         },
 
-        showPossibleMovesBishop() {
+        showPossibleMovesBishop(piece) {
 
             // define row and column location of pieceMoving
-            let currentColumn = this.columnArray.indexOf(this.pieceMoving.position.charAt(0));
-            let currentRow = this.rowArray.indexOf(this.pieceMoving.position.charAt(1));
+            let currentColumn = this.columnArray.indexOf(piece.position.charAt(0));
+            let currentRow = this.rowArray.indexOf(piece.position.charAt(1));
 
             // possibleMoves evaluation, moving vertical-up AND horizontal-left
             for (let i = 1; (i < 8 - currentRow) && (i <= currentColumn); i++) {
@@ -671,12 +767,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
                 }
 
             }
@@ -689,12 +785,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
                 }
 
             }
@@ -707,12 +803,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                 }
             }
 
@@ -724,23 +820,23 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                 }
             }
 
 
         },
 
-        showPossibleMovesQueen() {
+        showPossibleMovesQueen(piece) {
 
             // define row and column location of pieceMoving
-            let currentColumn = this.columnArray.indexOf(this.pieceMoving.position.charAt(0));
-            let currentRow = this.rowArray.indexOf(this.pieceMoving.position.charAt(1));
+            let currentColumn = this.columnArray.indexOf(piece.position.charAt(0));
+            let currentRow = this.rowArray.indexOf(piece.position.charAt(1));
 
             // possibleMoves evaluation, moving vertical & upward
             for (let i = 1; i < 8 - currentRow; i++) {
@@ -750,12 +846,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
                 }
 
             }
@@ -768,12 +864,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
                 }
 
             }
@@ -786,12 +882,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                 }
             }
 
@@ -803,12 +899,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                 }
             }
 
@@ -820,12 +916,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
                 }
 
             }
@@ -838,12 +934,12 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");                                  // adds css to cell
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
+                    
+                    piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
                 }
 
             }
@@ -856,12 +952,10 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                 }
             }
 
@@ -873,30 +967,27 @@ export default {
                 if (element.classList.contains(this.currentPlayer)) {
                     break;
                 } else if (element.classList.contains(this.otherPlayer)) {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                     break;
                 } else {
-                    element.classList.add("possibleMove");
-                    this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
+                    piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                 }
             }
 
         },
 
-        showPossibleMovesKnight() {
+        showPossibleMovesKnight(piece) {
 
             // define row and column location of pieceMoving
-            let currentColumn = this.columnArray.indexOf(this.pieceMoving.position.charAt(0));
-            let currentRow = this.rowArray.indexOf(this.pieceMoving.position.charAt(1));
+            let currentColumn = this.columnArray.indexOf(piece.position.charAt(0));
+            let currentRow = this.rowArray.indexOf(piece.position.charAt(1));
 
             // possibleMoves evaluation, two-up AND one-right
             let element = document.getElementById(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 2]));
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 2]));    // adds cell to list of possible moves within object
+                piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-up AND one-left
@@ -904,8 +995,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 2]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-down AND one-right
@@ -913,8 +1004,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 2]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-down AND one-left
@@ -922,8 +1013,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 2]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-right AND one-down
@@ -931,8 +1022,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-right AND one-up
@@ -940,8 +1031,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-left AND one-down
@@ -949,8 +1040,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-left AND one-up
@@ -958,23 +1049,23 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
         },
 
-        showPossibleMovesKing() {
+        showPossibleMovesKing(piece) {
             // define row and column location of pieceMoving
-            let currentColumn = this.columnArray.indexOf(this.pieceMoving.position.charAt(0));
-            let currentRow = this.rowArray.indexOf(this.pieceMoving.position.charAt(1));
+            let currentColumn = this.columnArray.indexOf(piece.position.charAt(0));
+            let currentRow = this.rowArray.indexOf(piece.position.charAt(1));
 
             // possibleMoves evaluation, one-up
             let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow + 1]));
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-up AND one-left
@@ -982,8 +1073,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-up AND one-right
@@ -991,8 +1082,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-down
@@ -1000,8 +1091,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-down AND one-left
@@ -1009,8 +1100,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-down AND one-right
@@ -1018,8 +1109,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-left
@@ -1027,8 +1118,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-right
@@ -1036,8 +1127,8 @@ export default {
 
             if (element !== null && !element.classList.contains(this.currentPlayer)) {
 
-                element.classList.add("possibleMove");                                  // adds css to cell
-                this.pieceMoving.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow]));    // adds cell to list of possible moves within object
+                
+                piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow]));    // adds cell to list of possible moves within object
             }
         }
 
