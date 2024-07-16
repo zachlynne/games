@@ -103,6 +103,7 @@ export default {
                     type: 'Pawn',
                     position: 'a2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -112,6 +113,7 @@ export default {
                     type: 'Pawn',
                     position: 'b2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -121,6 +123,7 @@ export default {
                     type: 'Pawn',
                     position: 'c2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -130,6 +133,7 @@ export default {
                     type: 'Pawn',
                     position: 'd2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -139,6 +143,7 @@ export default {
                     type: 'Pawn',
                     position: 'e2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -148,6 +153,7 @@ export default {
                     type: 'Pawn',
                     position: 'f2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -157,6 +163,7 @@ export default {
                     type: 'Pawn',
                     position: 'g2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -166,6 +173,7 @@ export default {
                     type: 'Pawn',
                     position: 'h2',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -176,6 +184,7 @@ export default {
                     type: 'Rook',
                     position: 'a1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -185,6 +194,7 @@ export default {
                     type: 'Rook',
                     position: 'h1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -195,6 +205,7 @@ export default {
                     type: 'Bishop',
                     position: 'b1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -204,6 +215,7 @@ export default {
                     type: 'Bishop',
                     position: 'g1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -214,6 +226,7 @@ export default {
                     type: 'Knight',
                     position: 'c1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -223,6 +236,7 @@ export default {
                     type: 'Knight',
                     position: 'f1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -233,9 +247,11 @@ export default {
                     type: 'King',
                     position: 'e1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
+                    inCheck: false,
                     image: "url('src/assets/whiteKing.png')"
                 },
 
@@ -243,6 +259,7 @@ export default {
                     type: 'Queen',
                     position: 'd1',
                     playerOwned: 'white',
+                    playerOpponent: 'black',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -252,6 +269,7 @@ export default {
                     type: 'Pawn',
                     position: 'a7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -261,6 +279,7 @@ export default {
                     type: 'Pawn',
                     position: 'b7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -270,6 +289,7 @@ export default {
                     type: 'Pawn',
                     position: 'c7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -279,6 +299,7 @@ export default {
                     type: 'Pawn',
                     position: 'd7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -288,6 +309,7 @@ export default {
                     type: 'Pawn',
                     position: 'e7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -297,6 +319,7 @@ export default {
                     type: 'Pawn',
                     position: 'f7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -306,6 +329,7 @@ export default {
                     type: 'Pawn',
                     position: 'g7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -315,6 +339,7 @@ export default {
                     type: 'Pawn',
                     position: 'h7',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -325,6 +350,7 @@ export default {
                     type: 'Rook',
                     position: 'a8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -334,6 +360,7 @@ export default {
                     type: 'Rook',
                     position: 'h8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -344,6 +371,7 @@ export default {
                     type: 'Bishop',
                     position: 'b8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -353,6 +381,7 @@ export default {
                     type: 'Bishop',
                     position: 'g8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -363,6 +392,7 @@ export default {
                     type: 'Knight',
                     position: 'c8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -372,6 +402,7 @@ export default {
                     type: 'Knight',
                     position: 'f8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -382,9 +413,11 @@ export default {
                     type: 'King',
                     position: 'e8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
+                    inCheck: false,
                     image: "url('src/assets/blackKing.png')"
                 },
 
@@ -392,6 +425,7 @@ export default {
                     type: 'Queen',
                     position: 'd8',
                     playerOwned: 'black',
+                    playerOpponent: 'white',
                     possibleMoves: new Array(),
                     isCaptured: false,
                     hasMoved: false,
@@ -405,15 +439,27 @@ export default {
             previousElement: null,
             currentPlayer: 'white',
             otherPlayer: 'black',
-            allPossibleMovesBlack: null,
-            allPossibleMovesWhite: null,
+            allPossibleMovesBlack: new Array(),
+            allPossibleMovesWhite: new Array(),
             rowArray: ["1", "2", "3", "4", "5", "6", "7", "8"],
             columnArray: ["a", "b", "c", "d", "e", "f", "g", "h"],
+
+            whiteKing: null,
+            blackKing: null,
+
         }
     },
 
     methods: {
+
         handleClick(event) {
+
+            this.checkForCheckStatus();
+            if (this.whiteKing.inCheck || this.blackKing.inCheck) {
+                alert("Your king is in check");
+            }
+
+
             if (this.pieceMoving === null) {
                 this.pickPiece(event);
             } else {
@@ -421,6 +467,7 @@ export default {
             }
 
         },
+
         setBoard() {
             this.listOfElements = document.getElementsByClassName("row");
             this.testElement = this.listOfElements[0];
@@ -442,6 +489,7 @@ export default {
             this.populateAllPossibleMoves();
 
         },
+
         movePiece(event) {
             // define new (second) click as target to move to
             let newElement = event.target;
@@ -453,7 +501,6 @@ export default {
                     document.getElementById(moveAllowed).classList.remove("possibleMove");
                 });
 
-                this.pieceMoving.possibleMoves = new Array();   // set possibleMoves array to empty
                 this.pieceMoving = null;                        // set pieceMoving to null to reset handleClick trigger
                 return;
             }
@@ -494,12 +541,17 @@ export default {
                     // piece has moved, so set pieceMoving to null - prevents multiple moves in one turn
                     this.pieceMoving = null;
 
-
                     // capture logic
                     if (newElement.classList.contains(this.otherPlayer)) {
 
                         // pull location data (ie. 'a2') from the square that was clicked
                         this.pieceCaptured = this.pieces.find((piece) => piece.position === newElement.id && piece.playerOwned === this.otherPlayer);
+
+                        // find index of the captured piece in the pieces array
+                        let indexOfPieceCaptured = this.pieces.indexOf(this.pieceCaptured);
+
+                        // remove captured piece from the pieces array (and only that piece " , 1 ")
+                        this.pieces.splice(indexOfPieceCaptured, 1);
 
                         newElement.classList.remove(this.pieceCaptured.playerOwned + this.pieceCaptured.type);
 
@@ -507,16 +559,20 @@ export default {
 
                     }
 
+                    // update all possible moves, used for king check status
+                    this.populateAllPossibleMoves();
+
+                    // divides moves into black moves and white moves
+                    this.populatePlayerSpecificMoves();
+
                     // if current player is white, make it black (and vice versa) -- set result to currentPlayer
                     this.otherPlayer = this.currentPlayer;
                     this.currentPlayer = this.currentPlayer === 'white' ? 'black' : 'white';
 
                 }
             });
-
-            this.populateAllPossibleMoves();
-
         },
+
         pickPiece(event) {
 
             // select a piece to move by clicking on a square (board space)
@@ -538,6 +594,7 @@ export default {
 
         },
 
+        // iterates through all pieces on the board, 
         populateAllPossibleMoves() {
 
             this.pieces.forEach((piece) => {
@@ -688,13 +745,13 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
                 }
 
@@ -705,14 +762,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
                 }
 
@@ -723,14 +780,14 @@ export default {
 
                 let element = document.getElementById((this.columnArray[currentColumn + i]) + this.rowArray[currentRow]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                 }
             }
@@ -740,14 +797,14 @@ export default {
                 this.testElement = (this.columnArray[currentColumn - i]) + this.rowArray[currentRow];
                 let element = document.getElementById((this.columnArray[currentColumn - i]) + this.rowArray[currentRow]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                 }
             }
@@ -764,14 +821,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
                 }
 
@@ -782,14 +839,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
                 }
 
@@ -800,14 +857,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                 }
             }
@@ -817,14 +874,14 @@ export default {
 
                 let element = document.getElementById((this.columnArray[currentColumn + i]) + this.rowArray[currentRow - i]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                 }
             }
@@ -840,17 +897,17 @@ export default {
 
             // possibleMoves evaluation, moving vertical & upward
             for (let i = 1; i < 8 - currentRow; i++) {
-                this.testElement = this.columnArray[currentColumn] + (this.rowArray[currentRow + i]);
+
                 let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + i]));
                 }
 
@@ -861,14 +918,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - i]));
                 }
 
@@ -879,14 +936,14 @@ export default {
 
                 let element = document.getElementById((this.columnArray[currentColumn + i]) + this.rowArray[currentRow]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow]);
                 }
             }
@@ -896,14 +953,14 @@ export default {
                 this.testElement = (this.columnArray[currentColumn - i]) + this.rowArray[currentRow];
                 let element = document.getElementById((this.columnArray[currentColumn - i]) + this.rowArray[currentRow]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + this.rowArray[currentRow]);
                 }
             }
@@ -913,14 +970,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow + i]));
                 }
 
@@ -931,14 +988,14 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (!element.classList.contains(this.currentPlayer) && element.classList.contains(this.otherPlayer)) {
-                    
+                } else if (!element.classList.contains(piece.playerOwned) && element.classList.contains(piece.playerOpponent)) {
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));    // adds cell to list of possible moves within object
                     break;
                 } else {
-                    
+
                     piece.possibleMoves.push(this.columnArray[currentColumn - i] + (this.rowArray[currentRow - i]));
                 }
 
@@ -949,9 +1006,9 @@ export default {
 
                 let element = document.getElementById(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
+                } else if (element.classList.contains(piece.playerOpponent)) {
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow + i]);
                     break;
                 } else {
@@ -964,9 +1021,9 @@ export default {
 
                 let element = document.getElementById((this.columnArray[currentColumn + i]) + this.rowArray[currentRow - i]);
 
-                if (element.classList.contains(this.currentPlayer)) {
+                if (element.classList.contains(piece.playerOwned)) {
                     break;
-                } else if (element.classList.contains(this.otherPlayer)) {
+                } else if (element.classList.contains(piece.playerOpponent)) {
                     piece.possibleMoves.push(this.columnArray[currentColumn + i] + this.rowArray[currentRow - i]);
                     break;
                 } else {
@@ -985,7 +1042,7 @@ export default {
             // possibleMoves evaluation, two-up AND one-right
             let element = document.getElementById(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 2]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
                 piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 2]));    // adds cell to list of possible moves within object
             }
@@ -993,63 +1050,63 @@ export default {
             // possibleMoves evaluation, two-up AND one-left
             element = document.getElementById(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 2]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-down AND one-right
             element = document.getElementById(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 2]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-down AND one-left
             element = document.getElementById(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 2]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 2]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-right AND one-down
             element = document.getElementById(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow - 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-right AND one-up
             element = document.getElementById(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow + 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn + 2] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-left AND one-down
             element = document.getElementById(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow - 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, two-left AND one-up
             element = document.getElementById(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow + 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 2] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
         },
@@ -1062,74 +1119,127 @@ export default {
             // possibleMoves evaluation, one-up
             let element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow + 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-up AND one-left
             element = document.getElementById(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-up AND one-right
             element = document.getElementById(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow + 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-down
             element = document.getElementById(this.columnArray[currentColumn] + (this.rowArray[currentRow - 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-down AND one-left
             element = document.getElementById(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-down AND one-right
             element = document.getElementById(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 1]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow - 1]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-left
             element = document.getElementById(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn - 1] + (this.rowArray[currentRow]));    // adds cell to list of possible moves within object
             }
 
             // possibleMoves evaluation, one-right
             element = document.getElementById(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow]));
 
-            if (element !== null && !element.classList.contains(this.currentPlayer)) {
+            if (element !== null && !element.classList.contains(piece.playerOwned)) {
 
-                
+
                 piece.possibleMoves.push(this.columnArray[currentColumn + 1] + (this.rowArray[currentRow]));    // adds cell to list of possible moves within object
             }
+
+            // assign white king piece's properties to "whiteKing" object -- will be used in check evaluation
+            if (piece.playerOwned === "white") {
+                this.whiteKing = piece;
+            }
+
+            // same for black king
+            if (piece.playerOwned === "black") {
+                this.blackKing = piece;
+            }
+
+        },
+
+        populatePlayerSpecificMoves() {
+
+            // clear all possible moves for white & black, prevents double / triple / + list generation
+            this.allPossibleMovesWhite = new Array();
+            this.allPossibleMovesBlack = new Array();
+
+            this.pieces.forEach((piece) => {
+
+                // if the piece is owned by the white player, add it to the list of all possible moves by the white player (plus what already exists in that list)
+                if (piece.playerOwned === "white") {
+                    this.allPossibleMovesWhite = this.allPossibleMovesWhite.concat(piece.possibleMoves);
+                }
+
+                // same for black
+                if (piece.playerOwned === "black") {
+                    this.allPossibleMovesBlack = this.allPossibleMovesBlack.concat(piece.possibleMoves);
+                }
+
+            });
+
+        },
+
+        checkForCheckStatus() {
+
+            if (this.currentPlayer === "white") {
+
+                if (this.allPossibleMovesBlack.includes(this.whiteKing.position)) {
+                    this.whiteKing.inCheck = true;
+                }
+
+            }
+
+            if (this.currentPlayer === "black") {
+
+                if (this.allPossibleMovesWhite.includes(this.blackKing.position)) {
+                    this.blackKing.inCheck = true;
+                }
+
+            }
+
         }
 
     },
